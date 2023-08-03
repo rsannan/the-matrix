@@ -1,16 +1,11 @@
-import Navbar from "./components/Navbar/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import SignInForm from "./components/SignIn/SignInForm";
-import SignUpForm from "./components/SignUp/SignUpForm";
+import { Navbar, SignInForm, SignUpForm } from "./components";
+import { LandingPage } from "./pages";
 
 function App() {
   return (
     <>
-    <div className="vh-100" style={{backgroundImage: 'url("../public/bg.jpg")'}}>
-      <Navbar />
-      <SignInForm/>
-      <SignUpForm/>
-      </div>
+      <LandingPage/>
     </>
   );
 }
