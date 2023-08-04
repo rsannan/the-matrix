@@ -5,6 +5,7 @@ import { LandingPage } from "./pages";
 function App() {
   return (
     <>
+    <Navbar/>
       <LandingPage/>
     </>
   );

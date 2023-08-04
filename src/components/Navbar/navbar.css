@@ -57,3 +57,23 @@ body {
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 }
+#brandLogo {
+  width: 83px;
+  height: 54.633px;
+  flex-shrink: 0;
+  color: #000;
+  font-family: "Roboto", sans-serif;
+  font-size: 42.025px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -1.051px;
+  text-transform: lowercase;
+}
+.brandlogo-rec {
+  width: 17.861px;
+  height: 5.253px;
+  flex-shrink: 0;
+  background: #ffd012;
+  margin-left: 38px;
+}

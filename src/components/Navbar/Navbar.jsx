@@ -2,13 +2,11 @@ import "./navbar.css";
 
 export default function Navbar() {
   return (
-    <nav
-      className="navbar navbar-expand-sm navbar-dark bg-dark"
-      aria-label="Third navbar example"
-    >
+    <nav className="navbar sticky-top navbar-expand-sm navbar-light bg-light mb-0">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          Expand at sm
+        <a className="navbar-brand" href="#" id="brandLogo">
+          <div className="brandlogo-rec"></div>
+          TheMatrix
         </a>
         <button
           className="navbar-toggler"
@@ -22,20 +20,22 @@ export default function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarsExample03">
+        <div className="collapse navbar-collapse">
           <ul className="navbar-nav ms-auto mb-2 mb-sm-0">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+            <li className="nav-item me-5">
+              <a className="nav-link active" href="#">
                 Home
+              </a>
+            </li>
+            <li className="nav-item me-5">
+              <a className="nav-link" href="#">
+                Features
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Link
+                About
               </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link disabled">Disabled</a>
             </li>
           </ul>
         </div>
