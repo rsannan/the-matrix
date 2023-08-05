@@ -19,8 +19,14 @@ export default function Hero() {
           </div>
           <div className="col-sm-6 col-12 right-con">
             <h1>Stay Connected Always.</h1>
-            <h2>Join us. Make a free account and connect with all your friends</h2>
-            <button>Get Started</button>
+            <h2>
+              Join us. Make a free account and connect with all your friends
+            </h2>
+            <button className="mt-5">
+              <span class="shadow"></span>
+              <span class="edge"></span>
+              <span class="front text"> Get Started</span>
+            </button>
           </div>
         </div>
       </div>
