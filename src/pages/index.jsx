@@ -1,3 +1,3 @@
 import LandingPage from "./LandingPage/LandingPage";
-
-export {LandingPage}
+import SignIn from "./SignInPage/SignIn";
+export {LandingPage, SignIn}
