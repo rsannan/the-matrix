@@ -8,7 +8,7 @@ export default function About() {
         <div className="row">
           <div class="cardabout">
             <div class="profileImage">
-            <a href="https://www.flaticon.com/free-icons/black-man" title="black man icons">Black man icons created by microstd - Flaticon</a>
+            <img src="black-man.png" className="profimg"/>
             </div>
             <div class="textContainer">
               <p class="name">Reginald Shawn Annan</p>

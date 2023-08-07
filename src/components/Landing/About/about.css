@@ -54,3 +54,8 @@
   background-color: rgb(43, 43, 43);
   transition-duration: 0.5s;
 }
+.profimg{
+  width: 150px;
+  height: 140px;
+  margin-left: 10px;
+}
