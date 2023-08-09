@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
 }
-svg {
+.loginIn > svg {
     position: absolute;
     top: 0;
     left: 0;

@@ -5,7 +5,7 @@ export default function SignIn() {
 
   return (
     <>
-      <div className="vh-100" style={{ backgroundColor: "#fff" }}>
+      <div className="vh-100 loginIn" style={{ backgroundColor: "#fff" }}>
         <Login/>
         <svg
           version="1.1"

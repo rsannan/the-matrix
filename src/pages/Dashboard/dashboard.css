@@ -1,0 +1,97 @@
+.dashgrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.dashdiv1 {
+  grid-area: 1 / 2 / 5 / 5;
+}
+.dashdiv2 {
+  grid-area: 1 / 1 / 5 / 2;
+}
+.dashdiv3 {
+  grid-area: 1 / 6 / 5 / 7;
+}
+.css-button-sliding-to-left--green {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  z-index: 0;
+  background: #fff;
+  overflow: hidden;
+  border: 2px solid #57cc99;
+  color: #57cc99;
+  left: 800px;
+}
+.css-button-sliding-to-left--green:hover {
+  color: #fff;
+}
+.css-button-sliding-to-left--green:hover:after {
+  width: 100%;
+}
+.css-button-sliding-to-left--green:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s ease;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: #57cc99;
+}
+.css-button-sliding-to-left--green > svg {
+  margin-right: 10px;
+}
+
+.input-wrapper .modalinput {
+  background-color: #eee;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 100%;
+  border-radius: 1rem;
+  color: #2c3e50;
+  box-shadow: 0 0.4rem #dfd9d9;
+  cursor: pointer;
+  resize: none;
+}
+
+.input-wrapper .modalinput:focus {
+  outline-color: #57cc99;
+}
+textarea::-webkit-scrollbar {
+  display: none;
+}
+.css-button-fully-rounded--green {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 20px;
+  border: 2px solid #57cc99;
+  background: #57cc99;
+}
+.css-button-fully-rounded--green:hover {
+  background: #fff;
+  color: #57cc99
+}
+.css-button-fully-rounded--green > svg{
+  margin-right: 5px;
+}

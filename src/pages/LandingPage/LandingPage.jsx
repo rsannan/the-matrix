@@ -5,11 +5,13 @@ import $ from "jquery";
 export default function LandingPage() {
   return (
     <>
+    <div className="landingPage">
       <Hero/>
       {/* Features Section */}
       <Features/>
       <About/>
       <Footer/>
+      </div>
     </>
   );
 }

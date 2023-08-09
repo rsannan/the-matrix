@@ -18,11 +18,11 @@ export default function Hero() {
             <img src="/star.png" className="z-3 position-absolute star4" />
           </div>
           <div className="col-sm-6 col-12 right-con">
-            <h1>Stay Connected Always.</h1>
-            <h2>
+            <h1 className="heroh1">Stay Connected Always.</h1>
+            <h2 className="heroh2">
               Join us. Make a free account and connect with all your friends
             </h2>
-            <button className="mt-5">
+            <button className="mt-5 herobtn">
               <span class="shadow"></span>
               <span class="edge"></span>
               <span class="front text"> Get Started</span>
