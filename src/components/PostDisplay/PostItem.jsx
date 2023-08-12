@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../../context";
 import { supabase } from "../database";
+import { Scrollbar } from "react-scrollbars-custom";
 
 export default function PostItem(props) {
   const { post_id, post_user_id, content } = props;
@@ -30,7 +31,7 @@ export default function PostItem(props) {
   }
   const likecount = 10;
   return (
-    <div className="py-3">
+    <div className="py-3 dashpostitem ">
       <div className=".container">
         <div className="row">
           <div className="col-1">
@@ -47,7 +48,7 @@ export default function PostItem(props) {
             <p>{content}</p>
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-secondary likebtn"
               onClick={handleLikeClick}
             >
               <svg
