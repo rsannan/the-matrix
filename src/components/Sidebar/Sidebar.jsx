@@ -1,5 +1,13 @@
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../database";
 import "./sidebar.css";
 export default function Sidebar() {
+  const navigate = useNavigate();
+  async function handleLogout(e) {
+    e.preventDefault();
+    const { error } = await supabase.auth.signOut();
+    navigate("/login");
+  }
   return (
     <>
       <div
@@ -84,7 +92,7 @@ export default function Sidebar() {
             </button>
             <ul class="dropdown-menu">
               <li className="sidabard">
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" onClick={handleLogout}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"

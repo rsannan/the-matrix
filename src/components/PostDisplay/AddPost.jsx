@@ -1,4 +1,24 @@
+import { useState } from "react";
+import { useUser } from "../../context";
+import { supabase } from "../database";
+
 export default function AddPost() {
+  const user = useUser();
+  const [content, setContent] = useState("");
+  const [isloading, setisLoading] = useState(false);
+  function handleContentChange(e) {
+    setContent(e.target.value);
+  }
+  async function handleSubmit() {
+    setisLoading(true);
+    const { error } = await supabase
+      .from("posts")
+      .insert({ user_id: user.id, content });
+    setisLoading(false);
+    if (error) {
+      alert(error.message)
+    }
+  }
   return (
     <div className="py-3">
       <button
@@ -44,6 +64,7 @@ export default function AddPost() {
               ></button>
             </div>
             <div class="modal-body">
+              {isloading && <div class="custom-loader"></div>}
               <div class="input-wrapper">
                 <textarea
                   maxLength="300"
@@ -51,11 +72,18 @@ export default function AddPost() {
                   placeholder="Type here..."
                   name="text"
                   class="modalinput"
+                  onChange={handleContentChange}
+                  value={content}
                 />
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="css-button-fully-rounded--green">
+              <button
+                type="button"
+                class="css-button-fully-rounded--green"
+                onClick={handleSubmit}
+                disabled={isloading?"true": ""}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

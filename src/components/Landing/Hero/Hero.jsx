@@ -1,4 +1,10 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Hero() {
+  const navigate = useNavigate()
+  function handleGetStarted(){
+    navigate("/login")
+  }
   return (
     <section className="sec1">
       <div className="container">
@@ -22,7 +28,7 @@ export default function Hero() {
             <h2 className="heroh2">
               Join us. Make a free account and connect with all your friends
             </h2>
-            <button className="mt-5 herobtn">
+            <button className="mt-5 herobtn" onClick={handleGetStarted}>
               <span class="shadow"></span>
               <span class="edge"></span>
               <span class="front text"> Get Started</span>

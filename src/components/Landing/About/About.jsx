@@ -1,7 +1,7 @@
 import "./about.css";
 export default function About() {
   return (
-    <section className="sec3">
+    <section className="sec3" id="about">
       <div class="container py-5">
         <h2 className="pb-3 border-bottom border-warning featuresh2">About</h2>
 

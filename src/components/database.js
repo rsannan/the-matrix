@@ -1,40 +1,9 @@
 import { createClient } from "@supabase/supabase-js";
-import "dotenv/config";
 const options = {
   auth: {
     persistSession: false,
   },
 };
-const supabase = createClient(process.env.URL, process.env.PUBLIC_KEY, options);
-
-const signUp = async (email, password) => {
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
-  });
-  if (error) {
-    return error;
-  } else {
-    return "success";
-  }
-};
-
-const signIn = async (email, password) => {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
-
-  if (error) {
-    return error;
-  } else {
-    return data;
-  }
-};
-
-const addPost = async (data) => {
-  const { error } = await supabase.from("posts").insert(data);
-  if (error) {
-    return error;
-  }
-};
+const url = import.meta.env.VITE_URL;
+const key = import.meta.env.VITE_PUBLIC_KEY;
+export const supabase = createClient(url, key, options);

@@ -95,3 +95,18 @@ textarea::-webkit-scrollbar {
 .css-button-fully-rounded--green > svg{
   margin-right: 5px;
 }
+.loginreminder{
+  font-size: 3rem;
+}
+.custom-loader {
+  position: absolute;
+  left: 220px;
+  top: 70px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  border:8px solid;
+  border-color:#766DF4 #0000;
+  animation:s1 1s infinite;
+}
+@keyframes s1 {to{transform: rotate(.5turn)}}

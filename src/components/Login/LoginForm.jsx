@@ -1,6 +1,9 @@
 import { useState } from "react";
-
+import { supabase } from "../database";
+import { useNavigate } from "react-router-dom";
+import { data } from "jquery";
 export default function Login() {
+  const navigate = useNavigate();
   const [hideLogin, setLogin] = useState({
     animation: false,
     hide: false,
@@ -40,9 +43,43 @@ export default function Login() {
     e.preventDefault();
     setSignUpForm({ ...signUpForm, [e.target.name]: e.target.value });
   }
+  async function handleSignUp(e) {
+    e.preventDefault();
+    const { username, password, email } = signUpForm;
+
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+    if (error) {
+      alert(error.message);
+    } else {
+      const { error } = await supabase
+        .from("profile")
+        .insert({ user_id: data.user.id, username });
+      if (error) {
+        alert(error.message);
+      }
+    }
+  }
+  async function handleLogin(e) {
+    e.preventDefault();
+    const { email, password } = loginForm;
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (error) {
+      alert(error.message);
+    } else {
+      navigate("/dashboard");
+    }
+  }
 
   return (
     <>
+      {/* login form */}
       <div
         className={
           "logincon " +
@@ -53,9 +90,13 @@ export default function Login() {
         <div className="container vh-100 vw-100">
           <div className="form-container">
             <p className="title">Login</p>
-            <form className="form" onChange={changeLoginForm}>
+            <form
+              className="form"
+              onChange={changeLoginForm}
+              onSubmit={handleLogin}
+            >
               <div className="input-group">
-                <label for="lemail">Email</label>
+                <label htmlFor="lemail">Email</label>
                 <input
                   type="email"
                   name="email"
@@ -65,7 +106,7 @@ export default function Login() {
                 />
               </div>
               <div className="input-group">
-                <label for="lpassword">Password</label>
+                <label htmlFor="lpassword">Password</label>
                 <input
                   type="password"
                   name="password"
@@ -79,7 +120,9 @@ export default function Login() {
                   </a>
                 </div>
               </div>
-              <button className="sign">Sign in</button>
+              <button className="sign" type="submit">
+                Sign in
+              </button>
             </form>
             <p className="signup">Don't have an account?</p>
             <button className="css-button-arrow--blue" onClick={changeLogin}>
@@ -89,6 +132,7 @@ export default function Login() {
           </div>
         </div>
       </div>
+      {/* Sign up form */}
       <div
         className={
           "logincon " +
@@ -99,7 +143,11 @@ export default function Login() {
         <div className="container vh-100 vw-100">
           <div className="form-container signupform">
             <p className="title">Sign Up</p>
-            <form className="form" onChange={changeSignUpForm}>
+            <form
+              className="form"
+              onChange={changeSignUpForm}
+              onSubmit={handleSignUp}
+            >
               <div className="input-group">
                 <label htmlFor="suusername">Username</label>
                 <input
@@ -127,7 +175,9 @@ export default function Login() {
                   value={signUpForm.password}
                 />
               </div>
-              <button className="sign">Sign Up</button>
+              <button className="sign" type="submit">
+                Sign Up
+              </button>
             </form>
             <p className="signup">Already have an account?</p>
             <button className="css-button-arrow--blue" onClick={changeSignUp}>
