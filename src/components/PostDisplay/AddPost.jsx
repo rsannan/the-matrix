@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useUser } from "../../context";
 import { supabase } from "../database";
+import * as bootstrap from "bootstrap";
 
 export default function AddPost() {
   const user = useUser();
   const [content, setContent] = useState("");
   const [isloading, setisLoading] = useState(false);
+  const myModal = document.getElementById("staticBackdrop");
   function handleContentChange(e) {
     setContent(e.target.value);
   }
@@ -15,8 +17,9 @@ export default function AddPost() {
       .from("posts")
       .insert({ user_id: user.id, content });
     setisLoading(false);
+    document.getElementById("closeModal").click();
     if (error) {
-      alert(error.message)
+      alert(error.message);
     }
   }
   return (
@@ -61,6 +64,7 @@ export default function AddPost() {
                 class="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                id="closeModal"
               ></button>
             </div>
             <div class="modal-body">
@@ -82,7 +86,7 @@ export default function AddPost() {
                 type="button"
                 class="css-button-fully-rounded--green"
                 onClick={handleSubmit}
-                disabled={isloading?"true": ""}
+                disabled={isloading ? "true" : ""}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

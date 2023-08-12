@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { supabase } from "../database";
 import { useNavigate } from "react-router-dom";
-import { data } from "jquery";
+import "./signin.css";
+import { Animated } from "react-animated-css";
+import { useUser } from "../../context";
 export default function Login() {
+  const [isVisibleLogin, setVisibleLogin] = useState(true);
+  const [isVisibleSignUp, setVisibleSignUp] = useState(false);
   const navigate = useNavigate();
-  const [hideLogin, setLogin] = useState({
-    animation: false,
-    hide: false,
-  });
-  const [hideSignUp, setSignUp] = useState({
-    animation: false,
-    hide: true,
-  });
+const user = useUser()
+if (user){
+  navigate('/dashboard')
+}
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
@@ -22,18 +22,12 @@ export default function Login() {
     password: "",
   });
   function changeLogin() {
-    setLogin({ ...hideLogin, animation: true });
-    setTimeout(() => {
-      setLogin({ ...hideLogin, hide: true });
-    }, 500);
-    setSignUp({ ...hideSignUp, hide: false });
+    setVisibleLogin(false);
+    setVisibleSignUp(true);
   }
   function changeSignUp() {
-    setSignUp({ ...hideSignUp, animation: true });
-    setTimeout(() => {
-      setSignUp({ ...hideSignUp, hide: true });
-    }, 500);
-    setLogin({ ...hideLogin, hide: false });
+    setVisibleLogin(true);
+    setVisibleSignUp(false);
   }
   function changeLoginForm(e) {
     e.preventDefault();
@@ -80,113 +74,120 @@ export default function Login() {
   return (
     <>
       {/* login form */}
-      <div
-        className={
-          "logincon " +
-          (hideLogin.animation ? "blur-out-contract " : "") +
-          (hideLogin.hide ? "hide" : "")
-        }
+      <Animated
+        animationIn="bounceInDown"
+        animationOut="fadeOutDown"
+        isVisible={isVisibleLogin}
+        className="logincon"
+        animationOutDuration={500}
       >
-        <div className="container vh-100 vw-100">
-          <div className="form-container">
-            <p className="title">Login</p>
-            <form
-              className="form"
-              onChange={changeLoginForm}
-              onSubmit={handleLogin}
-            >
-              <div className="input-group">
-                <label htmlFor="lemail">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  id="lemail"
-                  autoComplete="off"
-                  value={loginForm.email}
-                />
-              </div>
-              <div className="input-group">
-                <label htmlFor="lpassword">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  autoComplete="off"
-                  id="lpassword"
-                  value={loginForm.password}
-                />
-                <div className="forgot">
-                  <a rel="noopener noreferrer" href="#">
-                    Forgot Password ?
-                  </a>
+        <div className={"logincon "}>
+          <div className="container vh-100 vw-100">
+            <div className="form-container">
+              <p className="title">Login</p>
+              <form
+                className="form"
+                onChange={changeLoginForm}
+                onSubmit={handleLogin}
+              >
+                <div className="input-group">
+                  <label htmlFor="lemail">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="lemail"
+                    autoComplete="off"
+                    value={loginForm.email}
+                  />
                 </div>
-              </div>
-              <button className="sign" type="submit">
-                Sign in
-              </button>
-            </form>
-            <p className="signup">Don't have an account?</p>
-            <button className="css-button-arrow--blue" onClick={changeLogin}>
-              {" "}
-              Sign Up
-            </button>
-          </div>
-        </div>
-      </div>
-      {/* Sign up form */}
-      <div
-        className={
-          "logincon " +
-          (hideSignUp.animation ? "blur-out-contract " : "") +
-          (hideSignUp.hide ? "hide" : "")
-        }
-      >
-        <div className="container vh-100 vw-100">
-          <div className="form-container signupform">
-            <p className="title">Sign Up</p>
-            <form
-              className="form"
-              onChange={changeSignUpForm}
-              onSubmit={handleSignUp}
-            >
-              <div className="input-group">
-                <label htmlFor="suusername">Username</label>
-                <input
-                  type="text"
-                  id="suusername"
-                  name="username"
-                  value={signUpForm.username}
-                />
-              </div>
-              <div className="input-group">
-                <label htmlFor="suemail">Email</label>
-                <input
-                  type="text"
-                  id="suemail"
-                  name="email"
-                  value={signUpForm.email}
-                />
-              </div>
-              <div className="input-group">
-                <label htmlFor="supassword">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  id="supassword"
-                  value={signUpForm.password}
-                />
-              </div>
-              <button className="sign" type="submit">
+                <div className="input-group">
+                  <label htmlFor="lpassword">Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    autoComplete="off"
+                    id="lpassword"
+                    value={loginForm.password}
+                  />
+                  <div className="forgot">
+                    <a rel="noopener noreferrer" href="#">
+                      Forgot Password ?
+                    </a>
+                  </div>
+                </div>
+                <button className="sign" type="submit">
+                  Sign in
+                </button>
+              </form>
+              <p className="signup">Don't have an account?</p>
+              <button className="css-button-arrow--blue" onClick={changeLogin}>
+                {" "}
                 Sign Up
               </button>
-            </form>
-            <p className="signup">Already have an account?</p>
-            <button className="css-button-arrow--blue" onClick={changeSignUp}>
-              {" "}
-              Sign In
-            </button>
+            </div>
           </div>
         </div>
-      </div>
+      </Animated>
+      {/* Sign up form */}
+      <Animated
+        animationIn="bounceInLeft"
+        animationOut="fadeOutDown"
+        isVisible={isVisibleSignUp}
+        className="logincon"
+        animationOutDuration={500}
+      >
+        <div className={"logincon "}>
+          <div className="container vh-100 vw-100">
+            <div className="form-container signupform">
+              <p className="title">Sign Up</p>
+              <form
+                className="form"
+                onChange={changeSignUpForm}
+                onSubmit={handleSignUp}
+              >
+                <div className="input-group">
+                  <label htmlFor="suusername">Username</label>
+                  <input
+                    type="text"
+                    id="suusername"
+                    name="username"
+                    value={signUpForm.username}
+                  />
+                </div>
+                <div className="input-group">
+                  <label htmlFor="suemail">Email</label>
+                  <input
+                    type="text"
+                    id="suemail"
+                    name="email"
+                    value={signUpForm.email}
+                  />
+                </div>
+                <div className="input-group">
+                  <label htmlFor="supassword">Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="supassword"
+                    value={signUpForm.password}
+                  />
+                </div>
+                <button className="sign" type="submit">
+                  Sign Up
+                </button>
+              </form>
+              <p className="signup">Already have an account?</p>
+              <button
+                className={"css-button-arrow--blue "}
+                onClick={changeSignUp}
+              >
+                {" "}
+                Login
+              </button>
+            </div>
+          </div>
+        </div>
+      </Animated>
     </>
   );
 }

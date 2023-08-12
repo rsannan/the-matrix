@@ -2,17 +2,17 @@ import "./about.css";
 export default function About() {
   return (
     <section className="sec3" id="about">
-      <div class="container py-5">
+      <div className="container py-5">
         <h2 className="pb-3 border-bottom border-warning featuresh2">About</h2>
 
         <div className="row">
-          <div class="cardabout">
-            <div class="profileImage">
+          <div className="cardabout">
+            <div className="profileImage">
             <img src="black-man.png" className="profimg"/>
             </div>
-            <div class="textContainer">
-              <p class="name">Reginald Shawn Annan</p>
-              <p class="profileabout">Full-Stack Software Engineer</p>
+            <div className="textContainer">
+              <p className="name">Reginald Shawn Annan</p>
+              <p className="profileabout">Full-Stack Software Engineer</p>
             </div>
           </div>
           <div className="col">

@@ -8,7 +8,6 @@ export default function Provider({ children }) {
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
     async function getUser() {
-      
       supabase.auth.onAuthStateChange((event, session) => {
         setLoading(true);
         switch (event) {
@@ -16,6 +15,8 @@ export default function Provider({ children }) {
             setUser(session.user);
             setLoading(false);
             break;
+          case "SIGNED_OUT":
+            setUser(null);
           default:
             console.log("something went wrong");
         }
@@ -26,6 +27,6 @@ export default function Provider({ children }) {
   return <Context.Provider value={user}>{children}</Context.Provider>;
 }
 
-export function useUser(){
-    return useContext(Context)
+export function useUser() {
+  return useContext(Context);
 }

@@ -6,17 +6,17 @@ import Login from "../Login/LoginForm";
 export default function () {
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    async function getPosts() {
-      setIsLoading(true);
-      const { data, error } = await supabase.from("posts").select();
-      if (error) {
-        alert(error);
-      } else {
-        setPosts(data);
-        setIsLoading(false);
-      }
+  async function getPosts() {
+    setIsLoading(true);
+    const { data, error } = await supabase.from("posts").select();
+    if (error) {
+      alert(error);
+    } else {
+      setPosts(data.reverse());
+      setIsLoading(false);
     }
+  }
+  useEffect(() => {
     getPosts();
   }, []);
   return (

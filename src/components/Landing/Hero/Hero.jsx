@@ -29,9 +29,9 @@ export default function Hero() {
               Join us. Make a free account and connect with all your friends
             </h2>
             <button className="mt-5 herobtn" onClick={handleGetStarted}>
-              <span class="shadow"></span>
-              <span class="edge"></span>
-              <span class="front text"> Get Started</span>
+              <span className="shadow"></span>
+              <span className="edge"></span>
+              <span className="front text"> Get Started</span>
             </button>
           </div>
         </div>
