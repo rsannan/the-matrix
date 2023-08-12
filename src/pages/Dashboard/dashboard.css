@@ -4,9 +4,11 @@
   grid-template-rows: repeat(4, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  background-image: url("../../../public/bg.jpg");
 }
 .dashdiv1 {
   grid-area: 1 / 2 / 5 / 5;
+  background-color: #f1f2f6;
 }
 .dashdiv2 {
   grid-area: 1 / 1 / 5 / 2;

@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { useUser } from "../../context";
 import { supabase } from "../database";
-import * as bootstrap from "bootstrap";
 
 export default function AddPost() {
   const user = useUser();
   const [content, setContent] = useState("");
   const [isloading, setisLoading] = useState(false);
-  const myModal = document.getElementById("staticBackdrop");
   function handleContentChange(e) {
     setContent(e.target.value);
   }
