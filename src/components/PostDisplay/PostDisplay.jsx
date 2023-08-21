@@ -40,7 +40,7 @@ export default function () {
           <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
         </svg>
       </button>
-      <AddPost />
+      <AddPost getPosts={getPosts} />
       
 
       {isLoading ? (
@@ -55,6 +55,7 @@ export default function () {
               post_id={post.id}
               post_user_id={post.user_id}
               content={post.content}
+              getPosts={getPosts}
             />
           );
         })

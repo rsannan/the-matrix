@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useUser } from "../../context";
 import { supabase } from "../database";
 
-export default function AddPost() {
+export default function AddPost(props) {
   const user = useUser();
+  const { getPosts } = props;
   const [content, setContent] = useState("");
   const [isloading, setisLoading] = useState(false);
   function handleContentChange(e) {
@@ -15,7 +16,9 @@ export default function AddPost() {
       .from("posts")
       .insert({ user_id: user.id, content });
     setisLoading(false);
+    await getPosts();
     document.getElementById("closeModal").click();
+
     if (error) {
       alert(error.message);
     }

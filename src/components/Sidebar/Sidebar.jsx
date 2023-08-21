@@ -27,7 +27,7 @@ export default function Sidebar() {
           <hr />
           <ul class="nav nav-underline flex-column mb-auto ps-3">
             <li class="nav-item sideli">
-              <a class="nav-link" aria-current="page" href="#">
+              <a class="nav-link" aria-current="page" href="/dashboard">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
