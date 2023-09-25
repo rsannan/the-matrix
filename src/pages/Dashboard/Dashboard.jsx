@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { Sidebar, PostDisplay, Trending } from "../../components";
 import "./dashboard.css";
-import { useUser } from "../../context";
 import { useNavigate } from "react-router-dom";
 export default function Dashboard() {
   const [loading, setLoading] = useState(true);
-  const user = useUser();
+  const user = localStorage.getItem("session");
   const navigate = useNavigate();
   return user ? (
     <>
@@ -29,4 +28,4 @@ export default function Dashboard() {
       }, 1000)}
     </>
   );
-} 
+}

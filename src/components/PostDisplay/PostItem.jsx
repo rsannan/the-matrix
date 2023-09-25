@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import { useUser } from "../../context";
 import { supabase } from "../database";
 import { Scrollbar } from "react-scrollbars-custom";
-
+import { DBGetUser } from "../database";
 export default function PostItem(props) {
   const { post_id, post_user_id, content, getPosts } = props;
-  const user = useUser();
   const [isLoading, setIsLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [likeCount, setLikeCount] = useState(0);
   const [liked, setLiked] = useState(false);
   async function getLikes(post_id) {
+    const user = await DBGetUser();
     const { data, error } = await supabase
       .from("likes")
       .select()
@@ -43,6 +42,7 @@ export default function PostItem(props) {
     getPostUser();
   }, []);
   async function handleLikeClick() {
+    const user = await DBGetUser();
     const userlike = await supabase
       .from("likes")
       .select()
@@ -52,14 +52,14 @@ export default function PostItem(props) {
         .from("likes")
         .delete()
         .match({ user_id: user.id, post_id });
-        getLikes(post_id);
-        setLiked(false)
+      getLikes(post_id);
+      setLiked(false);
     } else {
       const { likeserror } = await supabase
         .from("likes")
         .insert({ user_id: user.id, post_id });
-        getLikes(post_id);
-        setLiked(true)
+      getLikes(post_id);
+      setLiked(true);
     }
   }
   return (

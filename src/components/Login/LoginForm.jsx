@@ -3,15 +3,15 @@ import { supabase } from "../database";
 import { useNavigate } from "react-router-dom";
 import "./signin.css";
 import { Animated } from "react-animated-css";
-import { useUser } from "../../context";
+import { DBLogin, DBSignUp } from "../database";
 export default function Login() {
   const [isVisibleLogin, setVisibleLogin] = useState(true);
   const [isVisibleSignUp, setVisibleSignUp] = useState(false);
   const navigate = useNavigate();
-const user = useUser()
-if (user){
-  navigate('/dashboard')
-}
+  const user = localStorage.getItem("loggedIn");
+  if (user) {
+    navigate("/dashboard");
+  }
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
@@ -39,36 +39,12 @@ if (user){
   }
   async function handleSignUp(e) {
     e.preventDefault();
-    const { username, password, email } = signUpForm;
-
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-    if (error) {
-      alert(error.message);
-    } else {
-      const { error } = await supabase
-        .from("profile")
-        .insert({ user_id: data.user.id, username });
-      if (error) {
-        alert(error.message);
-      }
-    }
+    DBSignUp(signUpForm);
   }
   async function handleLogin(e) {
     e.preventDefault();
-    const { email, password } = loginForm;
-
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    if (error) {
-      alert(error.message);
-    } else {
-      navigate("/dashboard");
-    }
+    await DBLogin(loginForm);
+    navigate("/dashboard");
   }
 
   return (

@@ -3,18 +3,12 @@ import AddPost from "./AddPost";
 import { useEffect, useState } from "react";
 import { supabase } from "../database";
 import Login from "../Login/LoginForm";
-export default function () {
+import { DBGetPosts, DBGetUser } from "../database";
+export default function PostDisplay() {
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   async function getPosts() {
-    setIsLoading(true);
-    const { data, error } = await supabase.from("posts").select();
-    if (error) {
-      alert(error);
-    } else {
-      setPosts(data.reverse());
-      setIsLoading(false);
-    }
+    DBGetPosts(setIsLoading, setPosts);
   }
   function refresh() {
     getPosts();
@@ -41,12 +35,11 @@ export default function () {
         </svg>
       </button>
       <AddPost getPosts={getPosts} />
-      
 
       {isLoading ? (
         <div className="dashloader">
-        <div class="custom-loader"></div>
-      </div>
+          <div class="custom-loader"></div>
+        </div>
       ) : (
         posts.map((post) => {
           return (

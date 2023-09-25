@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { useUser } from "../../context";
 import { supabase } from "../database";
-
+import { DBGetUser } from "../database";
 export default function AddPost(props) {
-  const user = useUser();
   const { getPosts } = props;
   const [content, setContent] = useState("");
   const [isloading, setisLoading] = useState(false);
@@ -12,6 +10,7 @@ export default function AddPost(props) {
   }
   async function handleSubmit() {
     setisLoading(true);
+    const user = await DBGetUser();
     const { error } = await supabase
       .from("posts")
       .insert({ user_id: user.id, content });
@@ -20,7 +19,7 @@ export default function AddPost(props) {
     document.getElementById("closeModal").click();
 
     if (error) {
-      alert(error.message);
+      alert("Add post Error: " + error.message);
     }
   }
   return (

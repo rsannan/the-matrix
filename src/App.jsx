@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import { LandingPage, SignIn, Dashboard } from "./pages";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import Provider, { useUser } from "./context";
+import Provider from "./context";
 function App() {
   return (
     <Provider>
