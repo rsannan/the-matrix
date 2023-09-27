@@ -42,7 +42,7 @@ export default function Sidebar() {
               </a>
             </li>
             <li class="nav-item sideli">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/profile">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

@@ -1,0 +1,18 @@
+.pdashgrid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    background-image: url("../../../public/bg.jpg");
+  }
+  .pdashdiv1 {
+    grid-area: 1 / 2 / 5 / 5;
+    background-color: #579BB1;
+  }
+  .pdashdiv2 {
+    grid-area: 1 / 1 / 5 / 2;
+  }
+  .pdashdiv3 {
+    grid-area: 1 / 6 / 5 / 7;
+  }

@@ -7,5 +7,5 @@ import Sidebar from "./Sidebar/Sidebar";
 import PostDisplay from "./PostDisplay/PostDisplay";
 import Trending from "./PostDisplay/Trending";
 import Features from "./Landing/Features/Features";
-
-export {Navbar,Hero, Features, About,Footer, Login, Sidebar, PostDisplay, Trending}
+import ProfileDisplay from "./Profile/Profile";
+export {Navbar,Hero, Features, About,Footer, Login, Sidebar, PostDisplay, Trending, ProfileDisplay}
