@@ -40,6 +40,7 @@ export default function Login() {
   async function handleSignUp(e) {
     e.preventDefault();
     DBSignUp(signUpForm);
+    navigate("/login");
   }
   async function handleLogin(e) {
     e.preventDefault();
