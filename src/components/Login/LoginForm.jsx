@@ -8,7 +8,7 @@ export default function Login() {
   const [isVisibleLogin, setVisibleLogin] = useState(true);
   const [isVisibleSignUp, setVisibleSignUp] = useState(false);
   const navigate = useNavigate();
-  const user = localStorage.getItem("loggedIn");
+  const user = localStorage.getItem("session");
   if (user) {
     navigate("/dashboard");
   }
@@ -39,7 +39,7 @@ export default function Login() {
   }
   async function handleSignUp(e) {
     e.preventDefault();
-    DBSignUp(signUpForm);
+    await DBSignUp(signUpForm);
     navigate("/login");
   }
   async function handleLogin(e) {
