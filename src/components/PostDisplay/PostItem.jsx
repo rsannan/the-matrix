@@ -72,7 +72,7 @@ export default function PostItem(props) {
               alt=""
               width="50"
               height="50"
-              class="rounded-circle me-2 d-inline"
+              className="rounded-circle me-2 d-inline"
             />
           </div>
           <div className="col">
@@ -80,7 +80,7 @@ export default function PostItem(props) {
             <p>{content}</p>
             <button
               type="button"
-              class="btn btn-secondary likebtn"
+              className="btn btn-secondary likebtn"
               onClick={handleLikeClick}
             >
               {liked ? (
@@ -91,10 +91,10 @@ export default function PostItem(props) {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="#c0392b"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-heart"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="feather feather-heart"
                 >
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>
@@ -103,7 +103,7 @@ export default function PostItem(props) {
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
-                  class="bi bi-heart"
+                  className="bi bi-heart"
                   viewBox="0 0 16 16"
                 >
                   <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>

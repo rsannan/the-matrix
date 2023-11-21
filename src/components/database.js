@@ -56,3 +56,25 @@ export async function DBGetUser() {
   const { data, error } = await supabase.auth.getSession();
   return data.session.user;
 }
+
+export async function DBGetProfilePicture(userId) {
+  const img = supabase.storage.from("profile-pictures").getPublicUrl(userId);
+}
+
+export async function DBPostProfilePicture(userId, file) {
+  const { data, error } = await supabase.storage
+    .from("profile-pictures")
+    .upload(userId, file);
+}
+
+export async function DBGetPostUser(userId) {
+  const { data, error } = await supabase
+    .from("profile")
+    .select("username")
+    .eq("user_id", userId);
+  if (error) {
+    alert(error.message);
+  } else {
+    return data[0].username;
+  }
+}
