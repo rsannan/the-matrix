@@ -59,12 +59,28 @@ export async function DBGetUser() {
 
 export async function DBGetProfilePicture(userId) {
   const img = supabase.storage.from("profile-pictures").getPublicUrl(userId);
+  return img.data.publicUrl;
 }
 
 export async function DBPostProfilePicture(userId, file) {
   const { data, error } = await supabase.storage
     .from("profile-pictures")
-    .upload(userId, file);
+    .upload(userId, file, { upsert: true, cacheControl: "60" });
+  if (data) {
+    return data;
+  } else {
+    return error;
+  }
+}
+export async function DBUpdateProfilePicture(userId, file) {
+  const { data, error } = await supabase.storage
+    .from("profile-pictures")
+    .update(userId, file);
+  if (data) {
+    return data;
+  } else {
+    return error;
+  }
 }
 
 export async function DBGetPostUser(userId) {

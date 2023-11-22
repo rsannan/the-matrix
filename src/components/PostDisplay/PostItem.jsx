@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../database";
+import { DBGetProfilePicture, supabase } from "../database";
 import { Scrollbar } from "react-scrollbars-custom";
 import { DBGetUser } from "../database";
+import { checkImage } from "../../utility";
+import { useSelector } from "react-redux";
+import { useLoaderData } from "react-router-dom";
 export default function PostItem(props) {
   const { post_id, post_user_id, content, getPosts } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [likeCount, setLikeCount] = useState(0);
   const [liked, setLiked] = useState(false);
+  const [imgUrl, setImgUrl] = useState("");
+  const { user } = useSelector((store) => store.autoLogin);
   async function getLikes(post_id) {
-    const user = await DBGetUser();
     const { data, error } = await supabase
       .from("likes")
       .select()
@@ -23,6 +27,22 @@ export default function PostItem(props) {
       setLiked(true);
     }
     setLikeCount(data.length);
+  }
+  async function getImg() {
+    const imgUrl = await DBGetProfilePicture(post_user_id);
+    checkImage(
+      imgUrl,
+      () => {
+        //if img exists
+        setImgUrl(imgUrl);
+      },
+      () => {
+        setImgUrl(
+          //if img doesnt exist
+          "https://xxeeeikbupnwhalaidac.supabase.co/storage/v1/object/public/profile-pictures/5856.jpg?t=2023-11-22T15%3A07%3A03.486Z"
+        );
+      }
+    );
   }
   useEffect(() => {
     async function getPostUser() {
@@ -39,6 +59,7 @@ export default function PostItem(props) {
       }
     }
     getLikes(post_id);
+    getImg();
     getPostUser();
   }, []);
   async function handleLikeClick() {
@@ -67,13 +88,17 @@ export default function PostItem(props) {
       <div className=".container">
         <div className="row">
           <div className="col-1">
-            <img
-              src="https://github.com/mdo.png"
-              alt=""
-              width="50"
-              height="50"
-              className="rounded-circle me-2 d-inline"
-            />
+            {imgUrl ? (
+              <img
+                src={imgUrl}
+                alt="Profile Picture"
+                width="50"
+                height="50"
+                className="rounded-circle me-2 d-inline"
+              />
+            ) : (
+              <div className="profile-loader"></div>
+            )}
           </div>
           <div className="col">
             <h4>{isLoading ? "..." : username}</h4>

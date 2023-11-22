@@ -1,14 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import { DBGetPostUser, supabase } from "../database";
+import { DBGetPostUser, supabase, DBGetProfilePicture } from "../database";
 import { useSelector, useDispatch } from "react-redux";
 import "./sidebar.css";
 import { logout } from "../../features/autoLogin";
 import { useEffect, useState } from "react";
+import { checkImage } from "../../utility";
 export default function Sidebar() {
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.autoLogin);
   const [name, setName] = useState(null);
   const [IsLoading, setIsLoading] = useState(true);
+  const [imgUrl, setImgUrl] = useState();
   const dispatch = useDispatch();
   useEffect(() => {
     async function getName() {
@@ -17,8 +19,25 @@ export default function Sidebar() {
       setName(name);
       setIsLoading(false);
     }
+    getImg();
     getName();
   }, []);
+  async function getImg() {
+    const imgUrl = await DBGetProfilePicture(user.id);
+    checkImage(
+      imgUrl,
+      () => {
+        //if img exists
+        setImgUrl(imgUrl);
+      },
+      () => {
+        setImgUrl(
+          //if img doesnt exist
+          "https://xxeeeikbupnwhalaidac.supabase.co/storage/v1/object/public/profile-pictures/5856.jpg?t=2023-11-22T15%3A07%3A03.486Z"
+        );
+      }
+    );
+  }
   async function handleLogout(e) {
     e.preventDefault();
     dispatch(logout());
@@ -82,14 +101,18 @@ export default function Sidebar() {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <img
-                src="https://github.com/mdo.png"
-                alt=""
-                width="32"
-                height="32"
-                className="rounded-circle me-2 "
-              />
-              <p className="d-inline"> {IsLoading ? <p>...</p> : name}</p>
+              {imgUrl ? (
+                <img
+                  src={imgUrl}
+                  alt=""
+                  width="32"
+                  height="32"
+                  className="rounded-circle me-2 "
+                />
+              ) : (
+                <div className="profile-loader"></div>
+              )}
+              <p className="d-inline"> {IsLoading ? "..." : name}</p>
             </button>
             <ul className="dropdown-menu">
               <li className="sidabard">
