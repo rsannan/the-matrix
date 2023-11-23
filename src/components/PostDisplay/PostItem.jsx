@@ -52,7 +52,7 @@ export default function PostItem(props) {
         .select("username")
         .eq("user_id", post_user_id);
       if (error) {
-        alert(error.message);
+        //alert("Sorry Postuser: " + error.message);
       } else {
         setUsername(data[0].username);
         setIsLoading(false);

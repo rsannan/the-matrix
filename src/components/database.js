@@ -45,7 +45,7 @@ export async function DBGetPosts(Loadingfx, Postfx) {
   Loadingfx(true);
   const { data, error } = await supabase.from("posts").select();
   if (error) {
-    alert(error);
+    //alert("Sorry DBgetposts: " + error.message);
   } else {
     Postfx(data.reverse());
     Loadingfx(false);
@@ -89,7 +89,7 @@ export async function DBGetPostUser(userId) {
     .select("username")
     .eq("user_id", userId);
   if (error) {
-    alert(error.message);
+    //alert("Sorry DBPostUser: " + error.message);
   } else {
     return data[0].username;
   }
