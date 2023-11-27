@@ -238,6 +238,10 @@ button:focus:not(:focus-visible) {
 }
 
 @media screen and (max-width: 992px) {
+  body{
+    width: fit-content;
+  }
+  
   .bg-logo,
   .logo1,
   .demopro,
@@ -248,6 +252,11 @@ button:focus:not(:focus-visible) {
   .star4,
   .ani > img {
     display: none;
+  }
+  .heroh1,
+  .heroh2,
+  .herobtn {
+    margin-left: 0;
   }
 }
 @media screen and (min-width: 1367px) {
