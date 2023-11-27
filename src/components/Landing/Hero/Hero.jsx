@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
-  const navigate = useNavigate()
-  function handleGetStarted(){
-    navigate("/login")
+  const navigate = useNavigate();
+  function handleGetStarted() {
+    navigate("/login");
   }
   return (
     <section className="sec1">
       <div className="container">
         <div className="row">
-          <div className="col-sm-6 col-12 ani">
+          <div className="col-lg-6 ani">
             <img src="/logo1.png" className="z-2 position-absolute logo1" />
             <img src="/logo2.png" className="z-1" />
             <img
@@ -23,7 +23,7 @@ export default function Hero() {
             <img src="/star.png" className="z-3 position-absolute star3" />
             <img src="/star.png" className="z-3 position-absolute star4" />
           </div>
-          <div className="col-sm-6 col-12 right-con">
+          <div className=" col-lg-6 right-con">
             <h1 className="heroh1">Stay Connected Always.</h1>
             <h2 className="heroh2">
               Join us. Make a free account and connect with all your friends

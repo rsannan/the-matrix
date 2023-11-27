@@ -186,3 +186,106 @@ button:focus:not(:focus-visible) {
 }
 /* colors */
 /* https://colorhunt.co/palette/9ac5f499dbf5a7eceeffeebb */
+
+@media screen and (max-width: 1366px) {
+  .bg-logo {
+    height: 500px;
+    left: 100px;
+    top: 200px;
+  }
+  .logo1 {
+    height: 400px;
+    left: 150px;
+    top: 200px;
+  }
+  .demopro {
+    left: 350px;
+    width: 200px;
+  }
+  .emoji {
+    height: 150px;
+    right: 1100px;
+    top: 580px;
+  }
+  .star1 {
+    top: 250px;
+    left: 500px;
+  }
+  .star2 {
+    top: 220px;
+    left: 180px;
+  }
+  .star3 {
+    bottom: 180px;
+    left: 150px;
+  }
+  .star4 {
+    bottom: 150px;
+    left: 480px;
+  }
+  .heroh1,
+  .heroh2,
+  .herobtn {
+    margin-left: 50px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .heroh1,
+  .heroh2,
+  .herobtn {
+    margin-left: 100px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .bg-logo,
+  .logo1,
+  .demopro,
+  .emoji,
+  .star1,
+  .star2,
+  .star3,
+  .star4,
+  .ani > img {
+    display: none;
+  }
+}
+@media screen and (min-width: 1367px) {
+  .bg-logo {
+    left: 100px;
+    top: 100px;
+  }
+  .logo1 {
+    left: 150px;
+    top: 100px;
+  }
+  .demopro {
+    left: 450px;
+    top: 680px;
+  }
+  .emoji {
+    right: 1600px;
+    top: 680px;
+  }
+  .heroh1,
+  .heroh2,
+  .herobtn {
+    margin-left: 200px;
+  }
+  .star1 {
+    top: 200px;
+    left: 700px;
+  }
+  .star2 {
+    top: 200px;
+    left: 300px;
+  }
+  .star3 {
+    bottom: 280px;
+    left: 200px;
+  }
+  .star4 {
+    bottom: 320px;
+    left: 680px;
+  }
+}
