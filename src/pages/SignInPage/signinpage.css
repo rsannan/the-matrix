@@ -13,3 +13,9 @@ height: 100%;
     background-color: #0e4166;
 background-image: linear-gradient(to bottom, rgba(14, 65, 102, 0.86), #0e4166);
 }
+
+@media screen and (max-width: 992px) {
+ .logincon{
+    left: 0;
+ }
+  }
