@@ -238,10 +238,6 @@ button:focus:not(:focus-visible) {
 }
 
 @media screen and (max-width: 992px) {
-  body{
-    width: fit-content;
-  }
-  
   .bg-logo,
   .logo1,
   .demopro,
@@ -257,6 +253,11 @@ button:focus:not(:focus-visible) {
   .heroh2,
   .herobtn {
     margin-left: 0;
+  }
+}
+@media screen and (max-width: 470px) {
+  .landingPage {
+    width: fit-content;
   }
 }
 @media screen and (min-width: 1367px) {

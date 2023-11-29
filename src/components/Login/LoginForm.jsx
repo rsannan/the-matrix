@@ -55,11 +55,11 @@ export default function Login() {
         animationIn="bounceInDown"
         animationOut="fadeOutDown"
         isVisible={isVisibleLogin}
-        className="logincon"
+        className={"logincon " + (isVisibleLogin ? "" : "hide")}
         animationOutDuration={500}
       >
-        <div className={"logincon "}>
-          <div className="container vh-100 vw-100">
+        <div className="vh-100 con">
+          <div className="innercon">
             <div className="form-container">
               <p className="title">Login</p>
               <form
@@ -110,11 +110,11 @@ export default function Login() {
         animationIn="bounceInLeft"
         animationOut="fadeOutDown"
         isVisible={isVisibleSignUp}
-        className="logincon"
+        className={"logincon " + (isVisibleSignUp ? "" : "hide")}
         animationOutDuration={500}
       >
-        <div className={"logincon "}>
-          <div className="container vh-100 vw-100">
+        <div className="vh-100 con">
+          <div className="innercon">
             <div className="form-container signupform">
               <p className="title">Sign Up</p>
               <form
