@@ -87,7 +87,7 @@ export default function PostItem(props) {
     <div className="py-3 dashpostitem ">
       <div className=".container">
         <div className="row">
-          <div className="col-1">
+          <div className="col-4 col-sm-2 col-md-2 col-lg-2">
             {imgUrl ? (
               <img
                 src={imgUrl}
@@ -100,7 +100,7 @@ export default function PostItem(props) {
               <div className="profile-loader"></div>
             )}
           </div>
-          <div className="col">
+          <div className="col-9 col-md-10 col-lg-10">
             <h4>{isLoading ? "..." : username}</h4>
             <p>{content}</p>
             <button

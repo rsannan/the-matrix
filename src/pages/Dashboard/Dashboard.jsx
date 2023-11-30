@@ -4,6 +4,7 @@ import "./dashboard.css";
 import { useNavigate } from "react-router-dom";
 import { getSessionUser, skipLoading } from "../../features/autoLogin";
 import { useDispatch, useSelector } from "react-redux";
+import NewSideBar from "../../components/Sidebar/NewSideBar";
 export default function Dashboard() {
   const { user, isLoading } = useSelector((store) => store.autoLogin);
   const dispatch = useDispatch();
@@ -31,7 +32,8 @@ export default function Dashboard() {
             <PostDisplay />
           </div>
           <div className="dashdiv2">
-            <Sidebar />
+            {/* <Sidebar /> */}
+            <NewSideBar/>
           </div>
           <div className="dashdiv3">
             <Trending />

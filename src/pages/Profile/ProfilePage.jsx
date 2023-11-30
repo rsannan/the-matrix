@@ -1,4 +1,5 @@
 import { ProfileDisplay, Sidebar } from "../../components";
+import NewSideBar from "../../components/Sidebar/NewSideBar";
 import "./profile.css";
 
 export default function ProfilePage() {
@@ -9,7 +10,7 @@ export default function ProfilePage() {
           <ProfileDisplay />
         </div>
         <div className="pdashdiv2">
-          <Sidebar />
+          <NewSideBar/>
         </div>
       </div>
     </>

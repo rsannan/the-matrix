@@ -48,9 +48,12 @@ export default function Sidebar() {
     <>
       <div
         className="d-inline-flex vh-100 text-bg-dark"
-        style={{ width: "250px" }}
+        style={{ width: "100%" }}
+        id="sidebar"
       >
+
         <div className="d-flex flex-column flex-grow-1">
+          
           <a
             className="navbar-brand"
             href="#"
