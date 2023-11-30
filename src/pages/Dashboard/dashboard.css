@@ -247,7 +247,6 @@ textarea::-webkit-scrollbar {
   justify-content: end;
   align-items: center;
 }
-
 @media screen and (max-width: 1366px) {
   .likebtn {
     margin-left: 360px;
@@ -297,5 +296,36 @@ textarea::-webkit-scrollbar {
   }
   .likebtn {
     margin-left: 10px;
+  }
+}
+
+@media screen and (max-height: 935px) {
+  .profileDivider {
+    margin-top: 590px;
+  }
+}
+@media screen and (max-height: 915px) {
+  .profileDivider {
+    margin-top: 570px;
+  }
+}
+@media screen and (max-height: 900px) {
+  .profileDivider {
+    margin-top: 550px;
+  }
+}
+@media screen and (max-height: 850px) {
+  .profileDivider {
+    margin-top: 500px;
+  }
+}
+@media screen and (max-height: 740px) {
+  .profileDivider {
+    margin-top: 400px;
+  }
+}
+@media screen and (max-height: 690px) {
+  .profileDivider {
+    margin-top: 320px;
   }
 }

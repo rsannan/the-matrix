@@ -117,11 +117,11 @@ function NewSideBar() {
               </li>
             </ul>
             <hr
+            className="profileDivider"
               style={{
                 borderTop: "1px solid #fff",
                 width: "100%",
                 opacity: "1",
-                marginTop: "530px",
               }}
             />
             <div className="dropup">
