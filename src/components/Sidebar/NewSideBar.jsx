@@ -46,16 +46,20 @@ function NewSideBar() {
     navigate("/login");
   }
   return (
-    <div className="vh-100">
+    <div className="" style={{ height: "100%" }}>
       <nav
-        class="navbar bg-dark navbar-expand-md py-0 mb-0 vh-100"
+        class="navbar  bg-dark navbar-expand-md py-0 mb-0 "
         data-bs-theme="dark"
+        style={{ height: "100%" }}
       >
-        <div class="container-fluid flex-nowrap flex-column align-items-start justify-content-start px-0 vh-100">
+        <div
+          class="container-fluid flex-nowrap flex-column align-items-start justify-content-start px-0"
+          style={{ height: "100%" }}
+        >
           <button
             class="navbar-toggler mx-2 my-2"
             type="button"
-            data-bs-toggle="collapse"
+            data-bs-toggle="offcanvas"
             data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
@@ -64,10 +68,19 @@ function NewSideBar() {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div
-            class="collapse navbar-collapse flex-column align-items-start"
+            class="offcanvas offcanvas-start flex-column align-items-start"
             id="navbarSupportedContent"
-            style={{ width: "100%" }}
+            // style={{ width: "100%" }}
+            tabindex="-1"
           >
+            <div class="offcanvas-header" style={{ width: "100%" }}>
+              <button
+                type="button"
+                class="btn-close ms-auto"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
             <a
               className="navbar-brand"
               href="#"
@@ -117,7 +130,7 @@ function NewSideBar() {
               </li>
             </ul>
             <hr
-            className="profileDivider"
+              className="profileDivider"
               style={{
                 borderTop: "1px solid #fff",
                 width: "100%",
@@ -130,7 +143,6 @@ function NewSideBar() {
                 className="btn btn-outline-secondary dropdown-toggle"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-                
               >
                 {imgUrl ? (
                   <img

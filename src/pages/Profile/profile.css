@@ -4,6 +4,7 @@
   grid-template-rows: repeat(4, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  height: 100vh;
   background-image: url("../../../public/bg.jpg");
 }
 .pdashdiv1 {
@@ -49,4 +50,29 @@
 .css-button-3d--grey:active {
   box-shadow: 0 0 #495057;
   top: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+  .pdashgrid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+
+  .pdashdiv1 {
+    grid-area: 1 / 3 / 6 / 10;
+  }
+  .pdashdiv2 {
+    grid-area: 1 / 1 / 6 / 3;
+  }
+  .pdashdiv3 {
+    display: none;
+  }
+}
+@media screen and (max-width: 766px) {
+  .pdashgrid {
+    height: fit-content;
+  }
 }
